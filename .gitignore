@@ -99,3 +99,6 @@ ENV/
 
 # vagrant
 .vagrant
+
+# squlite3
+db.squlite3

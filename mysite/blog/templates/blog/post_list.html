@@ -1,40 +1,13 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Kocri Website</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'CSS/blog.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Kocri blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <div>
-            <p1>published: 2017.05.15, 00:29</p1>
-            <h2><a href="">business</a></h2>
-            <p> 코크리 보털서비스 </p>
-            <p> 코딩 레벨 테스트 </p>
-            <p> 오프라인 코딩체험행사 </p>
-            <p> 글로벌 코딩교육프로그램 라이센스 비즈니스 </p>
-            <p> 코딩교육 강사육성 프로그램 </p>
-        </div>
-
-        <div>
-            <h1><a href="/">Kocri news</a></h1>
-        </div>
-
-        {% for post in posts %}
-            <div>
-                <p>published: {{ post.published_at }}</p>
-                <h2><a href="">{{ post.title }} </a></h2>
-                <p> {{ post.text|linebreaksbr }}</p>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
             </div>
-        {% endfor %}
-    </body>
-</html>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

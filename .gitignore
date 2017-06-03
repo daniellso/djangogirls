@@ -102,3 +102,6 @@ ENV/
 
 # squlite3
 db.squlite3
+
+# setting management
+local_settings.py
